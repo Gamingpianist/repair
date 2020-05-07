@@ -23,5 +23,9 @@ from django.conf.urls import url
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-
+    path('users/', include('users.urls')),
+    path('appliances/', include('appliances.urls')),
+    path('feedback/', include('feedback.urls')),
+    path('notice/', include('notice.urls')),
+    path('orders/', include('orders.urls')),
 ]

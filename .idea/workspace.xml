@@ -20,6 +20,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/tdog-master" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -51,6 +52,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588855025272" />
+    <state x="0" y="45" key="SettingsEditor" timestamp="1588861554018">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="0" y="45" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588861554018" />
     <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1588853604377">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
