@@ -3,17 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="aa9aeb93-1996-4393-953d-fde1c2ea2c8c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appliances/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/appliances/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appliances/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/appliances/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feedback/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/feedback/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feedback/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/feedback/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notice/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/notice/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notice/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/notice/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repair/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/repair/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
