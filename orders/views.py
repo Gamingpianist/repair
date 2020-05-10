@@ -12,4 +12,4 @@ class OrderView(View):
 
         orders = Order.objects.all()
         user = request.user
-        return render(request, "", {"orders": orders, "user": user})
+        return render(request, "index.html", {"orders": orders, "user": user})

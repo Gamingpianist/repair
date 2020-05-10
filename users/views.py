@@ -11,7 +11,7 @@ class LoginView(View):
     '''用户登录'''
 
     def get(self, request):
-        return render(request, "login.html")
+        return render(request, "signin.html")
 
     def post(self, request):
         phone = request.POST.get("username")
@@ -20,14 +20,14 @@ class LoginView(View):
         user = UserProfile.objects.get(phone=phone)
 
         if not check_password(password, user.password):
-            return render(request, "login.html")
+            return render(request, "signin.html")
 
         if user:
             login(request, user)
             print("user{} login!".format(user.get_username()))
             return render(request, "index.html")
         else:
-            return render(request, "login.html")
+            return render(request, "signin.html")
 
 
 class RegisterView(View):
