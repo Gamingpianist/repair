@@ -30,68 +30,112 @@
     <!-- End PreLoader -->
 
     <!--start header section -->
-    <div class="main_menu_area">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="header_nav">
-                    <nav class="navbar navbar-default">
-                        <!-- mobile display -->
-                        <div class="logo_flex">
-                            <button type="button" class="navbar-toggle">
-                                <span class="icon-menu">M <i class="fa fa-angle-down"></i></span>
-                            </button>
-                            <a class="logo" href="index.html">
-                                <img src="../static/assets/images/logo.png" alt="logo">
-                            </a>
-                        </div>
-                        <div class="navbar_flex responsive_menu">
-                            <div class="navbar-collapse">
-                                <ul class="nav navbar-nav">
-                                    <li>
-                                        <a href="index.html">登录注册</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="index.html">登录</a></li>
-                                            <li><a href="home-2.html">注册</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="about.html">个人信息</a></li>
-                                    <li><a href="services.html">维修服务</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="services.html">电冰箱</a></li>
-                                            <li><a href="service-refrigerator.html">电视机</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="page-book.html">订单信息</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
-                                    </li>
-                                    <li>
-                                        <a href="blog.html">公告</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
-                                    </li>
-                                    <li><a href="contact.html">反馈</a></li>
-                                </ul>
-                            </div><!-- /.navbar-collapse -->
-                        </div>
+	<div class="main_menu_area">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="header_nav">
+					<nav class="navbar navbar-default">
+					    <!-- mobile display -->
+					    <div class="logo_flex">
+					      <button type="button" class="navbar-toggle">
+					        <span class="icon-menu">M <i class="fa fa-angle-down"></i></span>
+					      </button>
+					      <a class="logo" href="index.html">
+							<img src="/static/assets/images/logo.png" alt="logo">
+					      </a>
+					    </div>
+					    <div class="navbar_flex responsive_menu">
+					    	<div class="navbar-collapse">
+						      <ul class="nav navbar-nav">
+						        <li>
+						        	<a href="">登录注册</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+						        	<ul class="dropdown-menu">
+										{% if request.user.is_authenticated %}
+										<li><a href="/users/logout/">退出登录</a></li>
+										{% else %}
+						        		<li><a href="/users/signin/">登录</a></li>
+						        		<li><a href="/users/signup/">注册</a></li>
+										{% endif %}
+						        	</ul>
+						        </li>
+						        <li>{% if request.user.is_authenticated %}
+						        	<a href="page-book.html">个人信息</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+									{% else %}
+									<a href="">个人信息</a><span class="responsive_click_menu fa fa-angle-down"></span>
+									<ul class="dropdown-menu">
+										<li><a href="/users/signin/">请先登录</a></li>
+									</ul>
+									{% endif %}
+								</li>
+						        <li><a href="/appliances/services/">维修服务</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+									<ul class="dropdown-menu">
+										<li><a href="service-detail.html">电冰箱</a></li>
+										<li><a href="service-detail.html">电视机</a></li>
+									</ul>
+						        </li>
+						        <li>
+									{% if request.user.is_authenticated %}
+						        	<a href="page-book.html">订单信息</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+									{% else %}
+									<a href="">订单信息</a><span class="responsive_click_menu fa fa-angle-down"></span>
+									<ul class="dropdown-menu">
+										<li><a href="/users/signin/">请先登录</a></li>
+									</ul>
+									{% endif %}
+						        </li>
+						        <li>
+						        	<a href="blog.html">公告</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+						        </li>
+						        <li>
+									{% if request.user.is_authenticated %}
+						        	<a href="page-book.html">反馈</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+									{% else %}
+									<a href="">反馈</a><span class="responsive_click_menu fa fa-angle-down"></span>
+									<ul class="dropdown-menu">
+										<li><a href="/users/signin/">请先登录</a></li>
+									</ul>
+									{% endif %}
+								</li>
+								  <li>
+						        	<a href="">行业资讯</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+									  <ul class="dropdown-menu">
+										<li><a href="/users/book1/">行业现状</a></li>
+										<li><a href="/users/book2/">政策环境</a></li>
+										  <li><a href="/users/book3/">市场分析</a></li>
+										  <li><a href="/users/book4/">发展趋势</a></li>
+									</ul>
+						        </li>
+						      </ul>
+						    </div><!-- /.navbar-collapse -->
+					    </div>
 
-                        <div class="social_icon_flex">
-                            <div class="header-social-right">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                                </ul>
-                                <span class="contact_us">
+					    <div class="social_icon_flex">
+					    	<div class="header-social-right">
+					    		<ul>
+					    			<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+					    			<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+					    			<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+					    			<li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+					    		</ul>
+								{% if request.user.is_authenticated %}
+								<span class="contact_us">
+									欢迎：{{ request.user.username }}
+								</span>
+								{% else %}
+				    			<span class="contact_us">
 				    				欢迎：游客<br>
-				    				<a href="">请先注册</a>
+				    				<a href="/users/signup/">请先注册</a>
 				    			</span>
-                            </div><!--end .header-social-right-->
-                        </div><!--end .col-md-4-->
+								{% endif %}
+
+					    	</div><!--end .header-social-right-->
+					    </div><!--end .col-md-4-->
                     </nav><!--end .navbar-->
-                </div><!--end .header_nav-->
-            </div><!--end .row-->
-        </div><!--end .container-fluid-->
-    </div><!--end .main_menu_area-->
-    <!--end header section -->
+				</div><!--end .header_nav-->
+			</div><!--end .row-->
+		</div><!--end .container-fluid-->
+	</div><!--end .main_menu_area-->
+	<!--end header section -->
 
 	<!--Start Breadcrumb Section -->
 	<section class="breadcrumb_area text-center section_padding gray_bg">

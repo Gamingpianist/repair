@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>爱我家园</title>
+    <!--google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <!--favicon-->
+    <link rel="icon" href="/static/assets/images/favicon.png">
+    <!-- Lib & Custom Stylesheet Included -->
+    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/assets/css/fontello.css">
+    <link rel="stylesheet" href="/static/assets/css/owl-carousel.min.css">
+    <link rel="stylesheet" href="/static/assets/css/magnific.min.css">
+    <link rel="stylesheet" href="/static/assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/static/assets/source/jquery.fancybox.css" media="screen" />
+    <link rel="stylesheet" href="/static/assets/css/style.css">
+    <link rel="stylesheet" href="/static/assets/css/responsive.css">
+</head>
+<body>
+
+    <!-- Start PreLoader -->
+    <div class="preloader">
+        <div class="loader cf">
+            <div class="span">
+                <div class="dashboard"></div>
+            </div><!--end .span-->
+        </div><!--end .loader .cf-->
+    </div><!--end .preloader-->
+    <!-- End PreLoader -->
+
+    <!--start header section -->
+	<div class="main_menu_area">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="header_nav">
+					<nav class="navbar navbar-default">
+					    <!-- mobile display -->
+					    <div class="logo_flex">
+					      <button type="button" class="navbar-toggle">
+					        <span class="icon-menu">M <i class="fa fa-angle-down"></i></span>
+					      </button>
+					      <a class="logo" href="index.html">
+							<img src="/static/assets/images/logo.png" alt="logo">
+					      </a>
+					    </div>
+					    <div class="navbar_flex responsive_menu">
+					    	<div class="navbar-collapse">
+						      <ul class="nav navbar-nav">
+						        <li>
+						        	<a href="">登录注册</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+						        	<ul class="dropdown-menu">
+										{% if request.user.is_authenticated %}
+										<li><a href="/users/logout/">退出登录</a></li>
+										{% else %}
+						        		<li><a href="/users/signin/">登录</a></li>
+						        		<li><a href="/users/signup/">注册</a></li>
+										{% endif %}
+						        	</ul>
+						        </li>
+						        <li>{% if request.user.is_authenticated %}
+						        	<a href="page-book.html">个人信息</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+									{% else %}
+									<a href="">个人信息</a><span class="responsive_click_menu fa fa-angle-down"></span>
+									<ul class="dropdown-menu">
+										<li><a href="/users/signin/">请先登录</a></li>
+									</ul>
+									{% endif %}
+								</li>
+						        <li><a href="/appliances/services/">维修服务</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+									<ul class="dropdown-menu">
+										<li><a href="service-detail.html">电冰箱</a></li>
+										<li><a href="service-detail.html">电视机</a></li>
+									</ul>
+						        </li>
+						        <li>
+									{% if request.user.is_authenticated %}
+						        	<a href="page-book.html">订单信息</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+									{% else %}
+									<a href="">订单信息</a><span class="responsive_click_menu fa fa-angle-down"></span>
+									<ul class="dropdown-menu">
+										<li><a href="/users/signin/">请先登录</a></li>
+									</ul>
+									{% endif %}
+						        </li>
+						        <li>
+						        	<a href="blog.html">公告</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+						        </li>
+						        <li>
+									{% if request.user.is_authenticated %}
+						        	<a href="page-book.html">反馈</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+									{% else %}
+									<a href="">反馈</a><span class="responsive_click_menu fa fa-angle-down"></span>
+									<ul class="dropdown-menu">
+										<li><a href="/users/signin/">请先登录</a></li>
+									</ul>
+									{% endif %}
+								</li>
+								  <li>
+						        	<a href="">行业资讯</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+									  <ul class="dropdown-menu">
+										<li><a href="/users/book1/">行业现状</a></li>
+										<li><a href="/users/book2/">政策环境</a></li>
+										  <li><a href="/users/book3/">市场分析</a></li>
+										  <li><a href="/users/book4/">发展趋势</a></li>
+									</ul>
+						        </li>
+						      </ul>
+						    </div><!-- /.navbar-collapse -->
+					    </div>
+
+					    <div class="social_icon_flex">
+					    	<div class="header-social-right">
+					    		<ul>
+					    			<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+					    			<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+					    			<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+					    			<li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+					    		</ul>
+								{% if request.user.is_authenticated %}
+								<span class="contact_us">
+									欢迎：{{ request.user.username }}
+								</span>
+								{% else %}
+				    			<span class="contact_us">
+				    				欢迎：游客<br>
+				    				<a href="/users/signup/">请先注册</a>
+				    			</span>
+								{% endif %}
+
+					    	</div><!--end .header-social-right-->
+					    </div><!--end .col-md-4-->
+                    </nav><!--end .navbar-->
+				</div><!--end .header_nav-->
+			</div><!--end .row-->
+		</div><!--end .container-fluid-->
+	</div><!--end .main_menu_area-->
+	<!--end header section -->
+
+	<!--Start Breadcrumb Section -->
+	<section class="breadcrumb_area text-center section_padding gray_bg">
+	    <ul class="breadcrumb">
+	        <li><a href="/users/index/">Home</a></li>
+	        <li> 行业资讯</li>
+	        <li> 政策环境</li>
+	    </ul>
+	    <h1>家电维修行业规范政策分析</h1>
+        <img class="header_slide_shape" src="/static/assets/images/header_slider_shape.png" alt="shape">
+	</section><!--end .breadcrumb_area-->
+	<!--End Breadcrumb Section -->
+
+	<!--Start Blog details Section -->
+	<section class="blog_details_area section_padding">
+		<div class="container">
+			<div class="row">
+	            <div class="col-md-8">
+	                <div class="blog_details_left">
+	                    <div class="blog_left_box">
+	                        <div class="blog_share_details">
+	                            <h1>家电维修行业规范政策分析</h1>
+								<br>
+	                            <p class="mb_30">家电维修和我们的生活息息相关，有关家电维修投诉一直是消协投诉榜上的热点。消费者反映，根本搞不清上门服务的维修人员是不是正规厂商的人员，此外，由于不清楚产品构造、原理以及配件的实际价格，维修价格往往“师傅说什么价就是什么价”。家电行业售后乱、维修难等问题有望得到改观。2016年北京家电维修行业规范政策分析详情如下。</p>
+	                            <p class="mb_30">鱼龙混杂的家电维修行业逐渐步入政策监管时代。12月8日，北京电子电器协会发布《北京市家电维修服务规范（试行）》（以下简称“规范”），根据规范要求，上门人员在内的维修服务人员需持有佩戴有二维码标识的“上岗证”、“上门服务证”。市商务委相关负责人表示，规范的发布将有助于保障行业企业、从业人员以及消费者的各方权益，营造和谐的市场环境。 这是北京首份家电维修行业的规范发布。据了解，规范从家电维修企业的开业条件、经营管理、岗位服务和诚信建设等方面做出规定，旨在引导地处京城的家电维修服务企业走向规范化、连锁化、品牌化道路。从具体规范内容来看，其中包括如，在城六区和通州区新注册的家电服务企业经营场所应达到50平方米；包括上门人员在内的维修服务人员，需持有佩戴有二维码标识的“上岗证”、“上门服务证”等详细内容。 事实上，家电行业长期存在的售后乱、维修难等问题一直为广大消费者所诟病。在此前的市场调查过程中，有消费者向北京商报记者表示，由于不清楚产品构造、原理以及配件的实际价格，进行家电维修后往往维修师傅说什么价格就是什么价格。另有消费者表示，上门服务的维修人员也没见身着统一制服，根本不知道是不是正规厂商的维修人员。</p>
+								<p class="mb_30">规范的落地成为净化家电维修市场环境的一剂良方。北京电子电器协会秘书长武建宝表示，规范对家电服务企业经营场所的场地面积提出要求，可以制约“小、散、乱”企业的发展，加速引导经营者向规范化、连锁化、品牌化发展。要求维修服务人员“持证”上岗，一方面有助于企业动态管理，同时也能让消费者查验上门服务人员的身份，防止意外发生。更多最新家电维修行业市场分析信息请查阅中国报告大厅发布的《2016-2021年中国家电维修产业市场运行暨产业发展趋势研究报告》。据了解，自去年7月北京市政府印发《北京市提高生活性服务业品质行动计划》以来，北京电子电器协会组织行业知名品牌家电企业、连锁服务企业和行业专家，结合服务业扩大开放和“互联网+”的市场环境，最终通过征求各方意见完成新规制订工作。市商务委相关负责人表示，大规模的开展标准规范宣贯活动将使行业企业、从业人员以及广大消费者全面了解行业现行有效法律、法规、标准、规范，从企业开业、经营管理、岗位服务等各个环节做到有章可循，引导行业规范有序发展，从多角度保障各方权益，营造和谐的市场环境。</p>
+								<p class="mb_30">生活性服务业的服务转型是一项系统工程，这需要政府、企业共同探索。北京经济管理职业学院应用电子教研室主任吴劲松表示，对于行业管理者来说，需要从国家整体行业战略角度考虑，从定位、标准、实施、流程、监督等方面继续给予指导，宏观把控家电服务的变革；对于家电企业来说，需要用互联网思维来重新审视服务内涵，率先用互联网的理念来探索服务升级之路，确实把服务融入到全产业链流程的各个环节。总之家电维修乱象的根本改变并不是一蹴而就的，而是需要常态性的监管，需要相关部门的协调与配合，更需要消费者以及社会各界的共同监管，这样才能在源头上解决家电维修的乱象。</p>
+							</br>
+							</div><!--end blog-share-details-->
+	                    </div><!--end .blog_social_share_box-->
+	                </div><!--end blog-details-left-->
+	            </div><!--end col-md-8-->
+            </div><!--end .row-->
+        </div><!--end .container-->
+	</section><!--end .blog_details_area-->
+	<!--End Blog details Section -->
+
+	<!--start footer section -->
+    <footer class="footer_section section_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="footer_box">
+                        <img src="/static/assets/images/footer_logo.png" alt="footer logo">
+                        <p>每天上万家庭及企业用户使用我们的服务，公司成立20余年以来，我们通过雄厚的技术实力及完善的创新服务模式，为每一个家庭提供高效、便捷、放心的全新服务体验。</p>
+                    </div><!--end .footer_box-->
+                </div><!--end .col-md-4-->
+
+                <div class="col-md-4 col-sm-4">
+                    <div class="footer_box">
+                        <h3>Contact</h3>
+                        <p>855 Road Broklyn Street, 600 New York, USA</p>
+                        <span class="support_email"><i class="fa fa-envelope"></i> <a href="">needhelp@refix.com</a></span>
+                        <span class="support_num"><i class="fa fa-phone-square"></i> <a href="">666 888 0000</a></span>
+                    </div><!--end .footer_box-->
+                </div><!--end .col-md-4-->
+            </div><!--end .row-->
+        </div><!--end .container-->
+
+        <!-- copyright section -->
+        <div class="copyright_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <p>&copy; copyright 2020 by lty</p>
+                    </div><!--end .col-md-6-->
+                    <div class="col-md-6 col-sm-6">
+                        <ul class="text-right">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        </ul>
+                    </div><!--end .col-md-6-->
+                </div><!--end .row-->
+            </div><!--end .container-->
+        </div><!--end .copyright_area-->
+    </footer><!--end .footer_section-->
+
+
+
+
+	<!-- Ajax Included -->
+	<script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/source/jquery.fancybox.pack.js"></script>
+	<script src="/static/assets/js/bootstrap.min.js"></script>
+    <script src="/static/assets/js/waypoint.js"></script>
+    <script src="/static/assets/js/jquery.counter.min.js"></script>
+	<script src="/static/assets/js/owl.carousel.min.js"></script>
+	<script src="/static/assets/js/waypoint.js"></script>
+	<script src="/static/assets/js/jquery.counter.min.js"></script>
+	<script src="/static/assets/js/magnific.min.js"></script>
+	<script src="/static/assets/js/custom.js"></script>
+</body>
+</html>
