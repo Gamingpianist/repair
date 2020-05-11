@@ -5,7 +5,8 @@ from django.contrib.auth.hashers import make_password, check_password
 
 from .models import UserProfile
 # Create your views here.
-
+def index(request):
+    return render(request, 'index.html')
 
 class LoginView(View):
     '''用户登录'''
@@ -34,7 +35,7 @@ class RegisterView(View):
     '''用户注册'''
 
     def get(self, request):
-        return render(request, 'register.html')
+        return render(request, 'signup.html')
 
     def post(self, request):
         # 从前端获取submit信息

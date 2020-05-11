@@ -83,8 +83,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': "repair",
         'USER': 'root',
-        # 'PASSWORD': 'lty520lyz',
-        'PASSWORD': '0000',
+        'PASSWORD': 'lty520lyz',
+        # 'PASSWORD': '0000',
         'HOST': 'localhost',
         'PORT': '3306',
     }
