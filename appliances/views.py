@@ -12,7 +12,7 @@ class ApplianceView(View):
 
     def get(self, request):
         appliances = Appliance.objects.all()
-        return render(request, "", {"appliances": appliances})
+        return render(request, 'index.html', {"appliances": appliances})
 
     # def post(self, request):
     #     '''创建'''

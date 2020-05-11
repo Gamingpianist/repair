@@ -2,11 +2,21 @@ from django.shortcuts import render
 from django.views.generic.base import View
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import make_password, check_password
-
+from appliances.models import Appliance
 from .models import UserProfile
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    appliances = Appliance.objects.all()
+    return render(request, 'index.html', {"appliances": appliances})
+
+def book1(request):
+    return render(request, 'book1.html')
+def book2(request):
+    return render(request, 'book2.html')
+def book3(request):
+    return render(request, 'book3.html')
+def book4(request):
+    return render(request, 'book4.html')
 
 class LoginView(View):
     '''用户登录'''
@@ -42,12 +52,11 @@ class RegisterView(View):
         username = request.POST.get("username")
         name = request.POST.get("name")
         phone = request.POST.get("phone")
-        gender = request.POST.get("gender")
         password = request.POST.get("password")
 
         # 创建新的UserProfile对象
         user = UserProfile.objects.create(
-            username=username, name=name, phone=phone, gender=gender, password=make_password(password))
+            username=username, name=name, phone=phone, password=make_password(password))
         user.is_superuser = False  # 去除管理权限
         user.save()
 

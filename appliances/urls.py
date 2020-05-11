@@ -8,4 +8,5 @@ from .views import ApplianceView
 
 urlpatterns = [
 
+
 ]
