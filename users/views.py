@@ -5,18 +5,28 @@ from django.contrib.auth.hashers import make_password, check_password
 from appliances.models import Appliance
 from .models import UserProfile
 # Create your views here.
+
+
 def index(request):
     appliances = Appliance.objects.all()
     return render(request, 'index.html', {"appliances": appliances})
 
+
 def book1(request):
     return render(request, 'book1.html')
+
+
 def book2(request):
     return render(request, 'book2.html')
+
+
 def book3(request):
     return render(request, 'book3.html')
+
+
 def book4(request):
     return render(request, 'book4.html')
+
 
 class LoginView(View):
     '''用户登录'''
@@ -65,7 +75,7 @@ class RegisterView(View):
         return render(request, 'index.html')
 
 
-def userLogout(request):
+def user_logout(request):
     '''退出登录'''
 
     logout(request)
