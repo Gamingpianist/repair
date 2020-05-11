@@ -14,10 +14,10 @@ class LoginView(View):
         return render(request, "signin.html")
 
     def post(self, request):
-        phone = request.POST.get("username")
+        username = request.POST.get("username")
         password = request.POST.get("password")
 
-        user = UserProfile.objects.get(phone=phone)
+        user = UserProfile.objects.get(username=username)
 
         if not check_password(password, user.password):
             return render(request, "signin.html")
