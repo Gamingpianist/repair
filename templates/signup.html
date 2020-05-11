@@ -16,25 +16,25 @@
         <title>Sign up</title>
 
         <!-- For favicon png -->
-		<link rel="shortcut icon" type="image/icon" href="../static/assets1/logo/favicon.png"/>
+		<link rel="shortcut icon" type="image/icon" href="/static/assets1/logo/favicon.png"/>
        
         <!--font-awesome.min.css-->
-        <link rel="stylesheet" href="../static/assets1/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/static/assets1/css/font-awesome.min.css">
 		
 		<!--animate.css-->
-        <link rel="stylesheet" href="../static/assets1/css/animate.css">
+        <link rel="stylesheet" href="/static/assets1/css/animate.css">
 		
         <!--bootstrap.min.css-->
-        <link rel="stylesheet" href="../static/assets1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/assets1/css/bootstrap.min.css">
 		
 		<!-- bootsnav -->
-		<link rel="stylesheet" href="../static/assets1/css/bootsnav.css" >
+		<link rel="stylesheet" href="/static/assets1/css/bootsnav.css" >
         
         <!--style.css-->
-        <link rel="stylesheet" href="../static/assets1/css/style.css">
+        <link rel="stylesheet" href="/static/assets1/css/style.css">
         
         <!--responsive.css-->
-        <link rel="stylesheet" href="../static/assets1/css/responsive.css">
+        <link rel="stylesheet" href="/static/assets1/css/responsive.css">
         
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -61,26 +61,26 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="signin-form">
-								<form action="signin.html" method="post" id="form_login">
+								<form method="post" id="reg_form" action="/">
 									<div class="form-col">
 										<div class="form-group">
 										    <label for="username">Username</label>
-										    <input type="text" class="form-control" id="username" placeholder="username">
+										    <input type="text" class="form-control" id="username" placeholder="username" name="username">
 										</div><!--/.form-group -->
 									</div><!--/.form-col -->
 									<div class="form-col1">
 										<div class="form-group">
 											<label for="name">name</label>
-										    <input type="text" class="form-control" id="name" placeholder="name">
+										    <input type="text" class="form-control" id="name" placeholder="name" name="name">
 										</div><!--/.form-group -->
 									</div><!--/.form-col1 -->
 									<div class="form-group">
 										<label for="phone">Phone</label>
-									    <input type="text" class="form-control" id="phone" placeholder="Enter your phone here">
+									    <input type="text" class="form-control" id="phone" placeholder="Enter your phone here" name="phone">
 									</div><!--/.form-group -->
 									<div class="form-group">
 										<label for="password">password</label>
-									    <input type="password" class="form-control" id="password" placeholder="Password">
+									    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
 									</div><!--/.form-group -->
 									<div class="form-group">
 										<label for="retype password">retype password</label>
@@ -93,33 +93,27 @@
 										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 										<input id="female" type="radio" name="gender"/>女
 									</div>
+									<button type="button" class="btn signin_btn" data-toggle="modal" data-target=".signin_modal" id="btn-submit" onclick=reg()>
+								sign up
+								</button>
+									<script>
+                                function reg() {
+                                    document.getElementById("reg_form").submit()
+                                }
+                            </script>
 								</form><!--/form -->
 							</div><!--/.signin-form -->
 						</div><!--/.col -->
 					</div><!--/.row -->
 
-
 					<div class="row">
+
 						<div class="col-sm-12">
 							<div class="signin-footer">
-								<button type="button" class="btn signin_btn" data-toggle="modal" data-target=".signin_modal" id="btn-submit" onclick="beforeSubmit()">
-								sign up
-								</button>
-								<script type="text/javascript">
-									var loginForm = document.getElementById('form_login');
-									function beforeSubmit(){
-									var username = document.getElementById('username').value;
-									var password = document.getElementById('password').value;
-									if (username.length < 6 || password.length < 6) {
-									alert('格式不正确！');
-									}else{
-									alert(username);
-									}
-									}
-								</script>
+
 								<p>
 									already member ?
-									<a href="signin.html">sign in</a>
+									<a href="/users/signin/">sign in</a>
 								</p>
 							</div><!--/.signin-footer -->
 						</div><!--/.col-->
@@ -131,24 +125,24 @@
 
 		 <!-- Include all js compiled plugins (below), or include individual files as needed -->
 
-		<script src="../static/assets1/js/jquery.js"></script>
+		<script src="/static/assets1/js/jquery.js"></script>
         
         <!--modernizr.min.js-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 		
 		<!--bootstrap.min.js-->
-        <script src="../static/assets1/js/bootstrap.min.js"></script>
+        <script src="/static/assets1/js/bootstrap.min.js"></script>
 		
 		<!-- bootsnav js -->
-		<script src="../static/assets1/js/bootsnav.js"></script>
+		<script src="/static/assets1/js/bootsnav.js"></script>
 		
 		<!-- jquery.sticky.js -->
-		<script src="../static/assets1/js/jquery.sticky.js"></script>
+		<script src="/static/assets1/js/jquery.sticky.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 		
         
         <!--Custom JS-->
-        <script src="../static/assets1/js/custom.js"></script>
+        <script src="/static/assets1/js/custom.js"></script>
 
     </body>
 	

@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib import admin
 from django.urls import path, include
-
+from users.views import index
 from django.conf.urls import url
 
 
@@ -28,4 +28,5 @@ urlpatterns = [
     path('feedback/', include('feedback.urls')),
     path('notice/', include('notice.urls')),
     path('orders/', include('orders.urls')),
+    path('', index)
 ]
