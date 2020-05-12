@@ -7,15 +7,15 @@
     <!--google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <!--favicon-->
-    <link rel="icon" href="../static/assets/images/favicon.png">
+    <link rel="icon" href="/static/assets/images/favicon.png">
     <!-- Lib & Custom Stylesheet Included -->
-    <link rel="stylesheet" href="../static/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../static/assets/css/fontello.css">
-    <link rel="stylesheet" href="../static/assets/css/animate.css">
-    <link rel="stylesheet" type="text/css" href="../static/assets/source/jquery.fancybox.css" media="screen" />
-    <link rel="stylesheet" href="../static/assets/css/style.css">
-    <link rel="stylesheet" href="../static/assets/css/responsive.css">
+    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/assets/css/fontello.css">
+    <link rel="stylesheet" href="/static/assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/static/assets/source/jquery.fancybox.css" media="screen" />
+    <link rel="stylesheet" href="/static/assets/css/style.css">
+    <link rel="stylesheet" href="/static/assets/css/responsive.css">
 </head>
 <body>
 
@@ -40,7 +40,7 @@
 					      <button type="button" class="navbar-toggle">
 					        <span class="icon-menu">M <i class="fa fa-angle-down"></i></span>
 					      </button>
-					      <a class="logo" href="index.html">
+					      <a class="logo" href="/">
 							<img src="/static/assets/images/logo.png" alt="logo">
 					      </a>
 					    </div>
@@ -69,8 +69,10 @@
 								</li>
 						        <li><a href="/appliances/services/">维修服务</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
 									<ul class="dropdown-menu">
-										<li><a href="service-detail.html">电冰箱</a></li>
-										<li><a href="service-detail.html">电视机</a></li>
+										{% for appliance in appliances %}
+											<li><a href="/appliances/service-detail/?app_id={{ appliance.id }}"> {{ appliance.name }}</a>
+										</li>
+										{% endfor %}
 									</ul>
 						        </li>
 						        <li>
@@ -140,10 +142,10 @@
 	<!--Start Breadcrumb Section -->
 	<section class="breadcrumb_area text-center section_padding gray_bg">
 	    <ul class="breadcrumb">
-	        <li><a href="index.html">Home</a></li>
+	        <li><a href="/">Home</a></li>
 	        <li> services</li>
 	    </ul>
-        <img class="header_slide_shape" src="../static/assets/images/header_slider_shape.png" alt="shape">
+        <img class="header_slide_shape" src="/static/assets/images/header_slider_shape.png" alt="shape">
 	</section><!--end .breadcrumb_area-->
 	<!--End Breadcrumb Section -->
 
@@ -153,12 +155,11 @@
 			<div class="row">
 				<div class="col-md-8">
 					<div class="service_single_left">
-						<div class="service_single_img">
-                            <img src="../static/assets/images/service_single.jpg" alt="service image">
-                            <i class="icon-refix-side-by-side"></i>
+						<div class="/upload/{{ appliance.image }}">
+                            <img src="/upload/{{ appliance.image }}" alt="service image">
                         </div><!--end .service_single_img-->
-						<h1>电冰箱</h1>
-						<p>Lorem Ipsum is simply dummy text of the rinting and typesetting industry has been the ndustry standard dummy text ever sincer they llam id condimentum purus In non ex at ligula fringilla bortis. Ut et mauris auctor, aliquet nulla sed, aliquam mauris. Vestibulum sed malesuada dolor. Integer fringilla odio a dolor aliquet, eu euismod lectus porttitor. Proin et libero nec eros eleifend commodo Phasellus sodales des volutpat diam, id sagittis purus egestas dapibus. Donec bibendum est quis mi commodo blandit.</p>
+						<h1>{{ appliance.name }}</h1>
+						<p>{{ appliance.description }}</p>
 						</div><!--end .contact-details-->
 					</div><!--end .service_single_left-->
 				</div><!--end .col-md-8-->
@@ -180,7 +181,7 @@
 
 	<!--start footer section -->
     <footer class="footer_section section_padding">
-        <img src="../static/assets/images/shape/test_footer_shape.png" alt="Footer shape" class="footer_shape">
+        <img src="/static/assets/images/shape/test_footer_shape.png" alt="Footer shape" class="footer_shape">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 col-sm-6">
@@ -226,13 +227,13 @@
 
 
 	<!-- Ajax Included -->
-	<script src="../static/assets/js/jquery.min.js"></script>
-    <script src="../static/assets/source/jquery.fancybox.pack.js"></script>
-    <script src="../static/assets/js/waypoint.js"></script>
-    <script src="../static/assets/js/jquery.counter.min.js"></script>
-	<script src="../static/assets/js/bootstrap.min.js"></script>
-    <script src="../static/assets/js/magnific.min.js"></script>
-    <script src="../static/assets/js/owl.carousel.min.js"></script>
-	<script src="../static/assets/js/custom.js"></script>
+	<script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/source/jquery.fancybox.pack.js"></script>
+    <script src="/static/assets/js/waypoint.js"></script>
+    <script src="/static/assets/js/jquery.counter.min.js"></script>
+	<script src="/static/assets/js/bootstrap.min.js"></script>
+    <script src="/static/assets/js/magnific.min.js"></script>
+    <script src="/static/assets/js/owl.carousel.min.js"></script>
+	<script src="/static/assets/js/custom.js"></script>
 </body>
 </html>

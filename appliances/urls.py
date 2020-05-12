@@ -1,11 +1,11 @@
 from django.urls import path
-
-from .views import ApplianceView
-
-
-
+from django.conf.urls import url
+from .views import ApplianceListView, viewByID, searchByName
 
 
 urlpatterns = [
-    path('services/', ApplianceView.as_view())
+    path('services/', ApplianceListView.as_view()),
+    path('service-detail/', viewByID),
+    path('search/', searchByName),
 ]
+

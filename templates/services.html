@@ -81,7 +81,7 @@
 					      <button type="button" class="navbar-toggle">
 					        <span class="icon-menu">M <i class="fa fa-angle-down"></i></span>
 					      </button>
-					      <a class="logo" href="index.html">
+					      <a class="logo" href="/">
 							<img src="/static/assets/images/logo.png" alt="logo">
 					      </a>
 					    </div>
@@ -108,10 +108,12 @@
 									</ul>
 									{% endif %}
 								</li>
-						        <li><a href="services.html">维修服务</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+						        <li><a href="/appliances/services/">维修服务</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
 									<ul class="dropdown-menu">
-										<li><a href="service-detail.html">电冰箱</a></li>
-										<li><a href="service-detail.html">电视机</a></li>
+										{% for appliance in appliances %}
+											<li><a href="/appliances/service-detail/?app_id={{ appliance.id }}"> {{ appliance.name }}</a>
+										</li>
+										{% endfor %}
 									</ul>
 						        </li>
 						        <li>
@@ -182,7 +184,7 @@
 	<!--Start Breadcrumb Section -->
 	<section class="breadcrumb_area text-center section_padding gray_bg">
 	    <ul class="breadcrumb">
-	        <li><a href="index.html">Home</a></li>
+	        <li><a href="/">Home</a></li>
 	        <li> services</li>
 	    </ul>
 	    <h1>Our Services</h1>
@@ -203,78 +205,25 @@
         </br>
         <div class="container">
             <div class="row">
+                {% for appliance in appliances %}
                 <div class="col-md-4 col-sm-6">
                     <div class="slider_service_box mb_60">
-                        <div class="slider_service_img">
-                            <i class="icon-freezer"></i>
+                        <div class="/upload/{{ appliance.image }}">
+                            <img src="/upload/{{ appliance.image }}" style="width: 300px;height:200px"/>
                         </div>
                         <div class="slider_service_details">
-                            <a href="service-refrigerator.html"><h2>Ice Maker</h2></a>
-                            <p>We are specialized in repairing your refrigerators. We promise to deliver satisfaction.</p>
-                            <a class="btn-readmore" href="service-refrigerator.html">Read More</a>
+                            <a href="service-refrigerator.html"><h2>{{ appliance.name }}</h2></a>
+                            <p>We are specialized in repairing your appliances. We promise to deliver satisfaction.</p>
+                            <a class="btn-readmore" href="/appliances/service-detail/?app_id={{ appliance.id }}">Read More</a>
                         </div><!--end .slider_service_details-->
                     </div><!--end .slider_service_box-->
                 </div><!--end .col-md-4-->
-                <div class="col-md-4 col-sm-6">
-                    <div class="slider_service_box mb_60">
-                        <div class="slider_service_img bg_2">
-                            <i class="icon-refix-side-by-side"></i>
-                        </div>
-                        <div class="slider_service_details">
-                            <a href="service-refrigerator.html"><h2>Refrigerator</h2></a>
-                            <p>We are specialized in repairing your refrigerators. We promise to deliver satisfaction.</p>
-                            <a class="btn-readmore" href="service-refrigerator.html">Read More</a>
-                        </div><!--end .slider_service_details-->
-                    </div><!--end .slider_service_box-->
-                </div><!--end .col-md-4-->
-                <div class="col-md-4 col-sm-6">
-                    <div class="slider_service_box mb_60">
-                        <div class="slider_service_img bg_3">
-                            <i class="icon-ice-cube-tray"></i>
-                        </div>
-                        <div class="slider_service_details">
-                            <a href="service-refrigerator.html"><h2>Salad Bars</h2></a>
-                            <p>We are specialized in repairing your refrigerators. We promise to deliver satisfaction.</p>
-                            <a class="btn-readmore" href="service-refrigerator.html">Read More</a>
-                        </div><!--end .slider_service_details-->
-                    </div><!--end .slider_service_box-->
-                </div><!--end .col-md-4-->
-                <div class="col-md-4 col-sm-6">
-                    <div class="slider_service_box">
-                        <div class="slider_service_img bg_4">
-                            <i class="icon-fridge"></i>
-                        </div>
-                        <div class="slider_service_details">
-                            <a href="service-refrigerator.html"><h2>Cold Colores</h2></a>
-                            <p>We are specialized in repairing your refrigerators. We promise to deliver satisfaction.</p>
-                            <a class="btn-readmore" href="service-refrigerator.html">Read More</a>
-                        </div><!--end .slider_service_details-->
-                    </div><!--end .slider_service_box-->
-                </div><!--end .col-md-4-->
-                <div class="col-md-4 col-sm-6">
-                    <div class="slider_service_box">
-                        <div class="slider_service_img bg_5">
-                            <i class="icon-refix-browser"></i>
-                        </div>
-                        <div class="slider_service_details">
-                            <a href="service-refrigerator.html"><h2>Freezers</h2></a>
-                            <p>We are specialized in repairing your refrigerators. We promise to deliver satisfaction.</p>
-                            <a class="btn-readmore" href="service-refrigerator.html">Read More</a>
-                        </div><!--end .slider_service_details-->
-                    </div><!--end .slider_service_box-->
-                </div><!--end .col-md-4-->
-                <div class="col-md-4 col-sm-6">
-                    <div class="slider_service_box">
-                        <div class="slider_service_img bg_6">
-                            <i class="icon-mercury-thermometer-and-a-snowflake"></i>
-                        </div>
-                        <div class="slider_service_details">
-                            <a href="service-refrigerator.html"><h2>Original Parts</h2></a>
-                            <p>We are specialized in repairing your refrigerators. We promise to deliver satisfaction.</p>
-                            <a class="btn-readmore" href="service-refrigerator.html">Read More</a>
-                        </div><!--end .slider_service_details-->
-                    </div><!--end .slider_service_box-->
-                </div><!--end .col-md-4-->
+                {% endfor %}
+
+
+
+
+
             </div><!--end .row-->
         </div><!--end .container-->
     </section><!--end .slider_service_area-->

@@ -42,7 +42,7 @@
 					      <button type="button" class="navbar-toggle">
 					        <span class="icon-menu">M <i class="fa fa-angle-down"></i></span>
 					      </button>
-					      <a class="logo" href="index.html">
+					      <a class="logo" href="/">
 							<img src="/static/assets/images/logo.png" alt="logo">
 					      </a>
 					    </div>
@@ -72,7 +72,8 @@
 						        <li><a href="/appliances/services/">维修服务</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
 									<ul class="dropdown-menu">
 										{% for appliance in appliances %}
-										<li><a href="/service-detail/">{{ appliance.name }}</a></li>
+											<li><a href="/appliances/service-detail/?app_id={{ appliance.id }}"> {{ appliance.name }}</a>
+										</li>
 										{% endfor %}
 									</ul>
 						        </li>
@@ -207,7 +208,7 @@
 						<div class="slider_service_details">
 							<a href="service-refrigerator.html"><h2>{{ appliance.name }}</h2></a>
 							<p>We are specialized in repairing your appliances. We promise to deliver satisfaction.</p>
-							<a class="btn-readmore" href="service-refrigerator.html">Read More</a>
+							<a class="btn-readmore" href="/appliances/service-detail/?app_id={{ appliance.id }}">Read More</a>
 						</div><!--end .slider_service_details-->
 					</div><!--end .slider_service_box-->
 					{% endfor %}

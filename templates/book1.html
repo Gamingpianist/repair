@@ -42,7 +42,7 @@
 					      <button type="button" class="navbar-toggle">
 					        <span class="icon-menu">M <i class="fa fa-angle-down"></i></span>
 					      </button>
-					      <a class="logo" href="index.html">
+					      <a class="logo" href="/">
 							<img src="/static/assets/images/logo.png" alt="logo">
 					      </a>
 					    </div>
@@ -71,8 +71,10 @@
 								</li>
 						        <li><a href="/appliances/services/">维修服务</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
 									<ul class="dropdown-menu">
-										<li><a href="service-detail.html">电冰箱</a></li>
-										<li><a href="service-detail.html">电视机</a></li>
+										{% for appliance in appliances %}
+											<li><a href="/appliances/service-detail/?app_id={{ appliance.id }}"> {{ appliance.name }}</a>
+										</li>
+										{% endfor %}
 									</ul>
 						        </li>
 						        <li>
@@ -142,7 +144,7 @@
 	<!--Start Breadcrumb Section -->
 	<section class="breadcrumb_area text-center section_padding gray_bg">
 	    <ul class="breadcrumb">
-	        <li><a href="/users/index/">Home</a></li>
+	        <li><a href="/">Home</a></li>
 	        <li> 行业资讯</li>
 	        <li> 行业现状</li>
 	    </ul>
