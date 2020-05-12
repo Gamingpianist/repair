@@ -7,7 +7,7 @@ class Appliance(models.Model):
     description = models.TextField(verbose_name='家电描述')
     image = models.ImageField(upload_to='images', verbose_name='家电图片')
 
-    class Mete:
+    class Meta:
         verbose_name = '维修家电信息'
         verbose_name_plural = verbose_name
 
