@@ -12,4 +12,4 @@ class ApplianceView(View):
 
     def get(self, request):
         appliances = Appliance.objects.all()
-        return render(request, "", {"appliances": appliances})
+        return render(request, "services.html", {"appliances": appliances})
