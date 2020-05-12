@@ -9,6 +9,7 @@ from .models import UserProfile
 
 def index(request):
     appliances = Appliance.objects.all()
+    print(appliances)
     return render(request, 'index.html', {"appliances": appliances})
 
 
