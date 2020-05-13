@@ -32,9 +32,8 @@ def viewByID(request):
 def searchByName(request):
     '''根据名称获取appliances列表(模糊搜索)'''
     if request.method == 'GET':
-        appname = request.Get.get('app_name')
+        appname = request.GET.get('app_name')
         appliances = Appliance.objects.filter(name__icontains=appname)
-
         return render(request, 'services.html', {'appliances': appliances})
     else:
         return traceback.print_exc()
