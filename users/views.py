@@ -79,13 +79,14 @@ class RegisterView(View):
 class UpdateView(View):
     '''变更用户信息'''
 
-    def put(self, request):
-        user_id = request.PUT.get('id')
-        name = request.PUT.get('name')
-        phone = request.PUT.get('phone')
-        password = request.PUT.get('password')
+    def get(self, request):
+        return render(request, 'userupdate.html')
 
-        user = UserProfile.objects.get(id=user_id)
+    def post(self, request):
+        user = request.user
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        password = request.POST.get('password')
 
         if name:
             user.name = name
@@ -98,7 +99,7 @@ class UpdateView(View):
 
         user.save()
 
-        return render(request, '', {'user': user})
+        return render(request, 'index.html', {'user': user})
 
 
 def user_logout(request):

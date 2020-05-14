@@ -12,26 +12,24 @@
     <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/assets/css/fontello.css">
-    <link rel="stylesheet" href="/static/assets/css/owl-carousel.min.css">
-    <link rel="stylesheet" href="/static/assets/css/magnific.min.css">
     <link rel="stylesheet" href="/static/assets/css/animate.css">
-    <link rel="stylesheet" href="/static/assets/source/jquery.fancybox.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/static/assets/source/jquery.fancybox.css" media="screen" />
     <link rel="stylesheet" href="/static/assets/css/style.css">
     <link rel="stylesheet" href="/static/assets/css/responsive.css">
 </head>
 <body>
 
-	<!-- Start PreLoader -->
-	<div class="preloader">
+    <!-- Start PreLoader -->
+    <div class="preloader">
         <div class="loader cf">
             <div class="span">
                 <div class="dashboard"></div>
             </div>
         </div>
     </div>
-	<!-- End PreLoader -->
+    <!-- End PreLoader -->
 
-	<!--start header section -->
+    <!--start header section -->
 	<div class="main_menu_area">
 		<div class="container-fluid">
 			<div class="row">
@@ -61,7 +59,7 @@
 						        	</ul>
 						        </li>
 						        <li>{% if request.user.is_authenticated %}
-						        	<a href="/users/userupdate/">个人信息</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+						        	<a href="page-book.html">个人信息</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
 									{% else %}
 									<a href="">个人信息</a><span class="responsive_click_menu fa fa-angle-down"></span>
 									<ul class="dropdown-menu">
@@ -141,174 +139,34 @@
 	</div><!--end .main_menu_area-->
 	<!--end header section -->
 
-	<!--start header Slider section -->
-	<section class="header_slider_section">
-        <div class="header_slider_area owl-carousel">
-            <div class="header_slider_bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="header_slide_text">
-                                <p>承诺最优秀的质量</p>
-                                <h1>“爱我家园”家电维修</h1>
-                            </div><!--end .header_slide_text-->
-                        </div><!--end .col-md-7-->
-                    </div><!--end .row-->
-                </div><!--end .container-->
-            </div><!--end .header_slider_bg-->
-            <div class="header_slider_bg slider_bg_2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="header_slide_text">
-                                <p>承诺最优质的服务</p>
-                                <h1>“爱我家园”家电维修</h1>
-                            </div><!--end .header_slide_text-->
-                        </div><!--end .col-md-7-->
-                    </div><!--end .row-->
-                </div><!--end .container-->
-            </div><!--end .header_slider_bg-->
-            <div class="header_slider_bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="header_slide_text">
-                                <p>承诺最优良的品质</p>
-                                <h1>“爱我家园”家电维修</h1>
-                            </div><!--end .header_slide_text-->
-                        </div><!--end .col-md-7-->
-                    </div><!--end .row-->
-                </div><!--end .container-->
-            </div><!--end .header_slider_bg-->
-        </div><!--end .header_slider_area-->
-        <img class="header_slide_shape" src="/static/assets/images/header_slider_shape.png" alt="slider shape">
-	</section><!--end .header_slider_section-->
-	<!--end header Slider section -->
+	<!--Start Breadcrumb Section -->
+	<section class="breadcrumb_area text-center section_padding gray_bg">
+	    <ul class="breadcrumb">
+	        <li><a href="/">Home</a></li>
+	        <li> services</li>
+	    </ul>
+        <img class="header_slide_shape" src="/static/assets/images/header_slider_shape.png" alt="shape">
+	</section><!--end .breadcrumb_area-->
+	<!--End Breadcrumb Section -->
 
-	<!--Start Slider Service section -->
-	<section class="slider_service_area some_padding section_padding text-center">
+	<!--Start Service Single Section -->
+	<section class="service_single_area section_padding">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
-					<div class="hero-section-title">
-						<i class="icon-snowflake"></i>
-						<h4>WHAT WE DO</h4>
-						<h1>Services we offer</h1>
-					</div><!--end .hero-section-title-->
-				</div><!--end .col-md-12-->
-			</div><!--end .row-->
-			<div class="row">
-				<div class="service_slider owl-carousel">
-					{% for appliance in appliances %}
-					<div class="slider_service_box">
-						<div class="/upload/{{ appliance.image }}">
-							<img src="/upload/{{ appliance.image }}">
-							<!--<i class="icon-freezer"></i>-->
-						</div>
-						<div class="slider_service_details">
-							<a href="service-refrigerator.html"><h2>{{ appliance.name }}</h2></a>
-							<p>We are specialized in repairing your appliances. We promise to deliver satisfaction.</p>
-							<a class="btn-readmore" href="/appliances/service-detail/?app_id={{ appliance.id }}">Read More</a>
-						</div><!--end .slider_service_details-->
-					</div><!--end .slider_service_box-->
-					{% endfor %}
-				</div><!--end .service_slider-->
-			</div><!--end .row-->
-		</div><!--end .container-->
-	</section><!--end .slider_service_area-->
-	<!--End Slider Service section -->
-
-	<!--start about section -->
-	<section class="about_area gray_bg">
-		<div class="container">
-			<div class="row">
-				<div class="about_flex">
-					<div class="about_details">
-						<div class="hero-section-title">
-							<i class="icon-snowflake"></i>
-							<h4>我们的服务</h4>
-							<h1>“爱我家园”家电维修</h1>
-						</div><!--end .hero-section-title-->
-						<p>
-							每天上万家庭及企业用户使用我们的服务，公司成立20余年以来，我们通过雄厚的技术实力及完善的创新服务模式，为每一个家庭提供高效、便捷、放心的全新服务体验。
-						</p>
-						<ul>
-							<li><i class="fa fa-check"></i> 专业工程师，考核上岗</li>
-							<li><i class="fa fa-check"></i> 价格透明，服务透明</li>
-							<li><i class="fa fa-check"></i> 专业客服，超长质保</li>
-							<li><i class="fa fa-check"></i> 全国覆盖，准时上门</li>
-						</ul>
-					</div><!--end .about_details-->
-					<div class="about_support">
-						<div class="about_support_flex">
-							<i class="icon-support"></i>
-							<p>联系客服热线 <br><span>666 888 0000</span></p>
-						</div><!--end .about_support_flex-->
-					</div><!--end .about_support-->
-				</div><!--end .about_flex-->
-			</div><!--end .row-->
-		</div><!--end .container-->
-	</section><!--end .about_area-->
-	<!--end about section -->
-
-	<!--start why choose us section -->
-	<section class="why_choose_us_area section_padding text-center">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="hero-section-title">
-						<i class="icon-snowflake"></i>
-						<h4>为什么选择我们？</h4>
-						<h1>Reasons to choose refix</h1>
-					</div><!--end .hero-section-title-->
-				</div><!--end .col-md-12-->
-			</div><!--end .row-->
-			<div class="row">
-				<div class="col-md-2 col-sm-6 col-xs-6">
-					<div class="why_choose_us_details">
-						<i class="icon-medal"></i>
-						<p>质量担保</p>
-					</div><!--end .why_choose_us_details-->
-				</div><!--end .col-md-2-->
-				<div class="col-md-2 col-sm-6 col-xs-6">
-					<div class="why_choose_us_details">
-						<i class="icon-appointment"></i>
-						<p>准时高效</p>
-					</div><!--end .why_choose_us_details-->
-				</div><!--end .col-md-2-->
-				<div class="col-md-2 col-sm-6 col-xs-6">
-					<div class="why_choose_us_details">
-						<i class="icon-warranty"></i>
-						<p>配件保修</p>
-					</div><!--end .why_choose_us_details-->
-				</div><!--end .col-md-2-->
-				<div class="col-md-2 col-sm-6 col-xs-6">
-					<div class="why_choose_us_details">
-						<i class="icon-wallet"></i>
-						<p>价格合理</p>
-					</div><!--end .why_choose_us_details-->
-				</div><!--end .col-md-2-->
-				<div class="col-md-2 col-sm-6 col-xs-6">
-					<div class="why_choose_us_details">
-						<i class="icon-shirt"></i>
-						<p>技术专业</p>
-					</div><!--end .why_choose_us_details-->
-				</div><!--end .col-md-2-->
-				<div class="col-md-2 col-sm-6 col-xs-6">
-					<div class="why_choose_us_details">
-						<i class="icon-box"></i>
-						<p>定期优惠</p>
-					</div><!--end .why_choose_us_details-->
-				</div><!--end .col-md-2-->
+				<div class="col-md-8">
+					<div class="service_single_left">
+						<h1>{{ notice.title }}</h1>
+						<p>{{ notice.content }}</p>
+						</div><!--end .contact-details-->
+					</div><!--end .service_single_left-->
+				</div><!--end .col-md-8-->
             </div><!--end .row-->
         </div><!--end .container-->
-	</section><!--end .why_choose_us_area-->
-	<!--end why choose us section -->
-
-
+	</section><!--end .service_single_area-->
+	<!--End Service Single Section -->
 
 	<!--start footer section -->
-	<footer class="footer_section section_padding">
+    <footer class="footer_section section_padding">
         <img src="/static/assets/images/shape/test_footer_shape.png" alt="Footer shape" class="footer_shape">
 		<div class="container">
 			<div class="row">
@@ -352,14 +210,16 @@
 	<!--end footer section -->
 
 
+
+
 	<!-- Ajax Included -->
 	<script src="/static/assets/js/jquery.min.js"></script>
     <script src="/static/assets/source/jquery.fancybox.pack.js"></script>
-	<script src="/static/assets/js/bootstrap.min.js"></script>
-	<script src="/static/assets/js/owl.carousel.min.js"></script>
     <script src="/static/assets/js/waypoint.js"></script>
     <script src="/static/assets/js/jquery.counter.min.js"></script>
-	<script src="/static/assets/js/magnific.min.js"></script>
+	<script src="/static/assets/js/bootstrap.min.js"></script>
+    <script src="/static/assets/js/magnific.min.js"></script>
+    <script src="/static/assets/js/owl.carousel.min.js"></script>
 	<script src="/static/assets/js/custom.js"></script>
 </body>
 </html>
