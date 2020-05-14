@@ -84,6 +84,10 @@ class UpdateView(View):
 
     def post(self, request):
         user = request.user
+
+        if user.is_superuser:
+            return render(request, 'index.html', {'user': user})
+
         name = request.POST.get('name')
         phone = request.POST.get('phone')
         password = request.POST.get('password')
@@ -95,7 +99,7 @@ class UpdateView(View):
             user.phone = phone
 
         if password:
-            user.password = password
+            user.password = make_password(password)
 
         user.save()
 
