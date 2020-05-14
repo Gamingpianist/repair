@@ -59,9 +59,9 @@
 						        	</ul>
 						        </li>
 						        <li>{% if request.user.is_authenticated %}
-						        	<a href="page-book.html">个人信息</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+						        	<a href="/users/userupdate/">个人信息</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
 									{% else %}
-									<a href="">个人信息</a><span class="responsive_click_menu fa fa-angle-down"></span>
+									<a href="/">个人信息</a><span class="responsive_click_menu fa fa-angle-down"></span>
 									<ul class="dropdown-menu">
 										<li><a href="/users/signin/">请先登录</a></li>
 									</ul>
