@@ -87,7 +87,7 @@
 									{% endif %}
 						        </li>
 						        <li>
-						        	<a href="blog.html">公告</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+						        	<a href="/notice/notice/">公告</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
 						        </li>
 						        <li>
 									{% if request.user.is_authenticated %}
@@ -173,7 +173,7 @@
                             <img src="/upload/{{ appliance.image }}" style="width: 300px;height:200px"/>
                         </div>
                         <div class="slider_service_details">
-                            <a href="service-refrigerator.html"><h2>{{ appliance.name }}</h2></a>
+                            <a href="/appliances/service-detail/?app_id={{ appliance.id }}"><h2>{{ appliance.name }}</h2></a>
                             <p>We are specialized in repairing your appliances. We promise to deliver satisfaction.</p>
                             <a class="btn-readmore" href="/appliances/service-detail/?app_id={{ appliance.id }}">Read More</a>
                         </div><!--end .slider_service_details-->

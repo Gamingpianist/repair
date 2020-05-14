@@ -10,7 +10,7 @@ class NoticeListView(View):
 
     def get(self, request):
         notices = Notice.objects.all()
-        return render(request, '', {'notices': notices})
+        return render(request, 'notice.html', {'notices': notices})
 
 
 class NoticeView(View):
@@ -19,4 +19,4 @@ class NoticeView(View):
     def get(self, request):
         notice_id = request.GET.get('notice_id')
         notice = Notice.objects.get(id=notice_id)
-        return render(request, '', {'notice': notice})
+        return render(request, 'notice-detail.html', {'notice': notice})

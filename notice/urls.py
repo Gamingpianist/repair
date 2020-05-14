@@ -3,6 +3,6 @@ from django.urls import path
 from .views import NoticeListView, NoticeView
 
 urlpatterns = [
-    path('', NoticeListView.as_view()),
-    path('view', NoticeView.as_view()),
+    path('notice/', NoticeListView.as_view()),
+    path('notice-detail/', NoticeView.as_view()),
 ]
