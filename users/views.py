@@ -10,7 +10,7 @@ from .models import UserProfile
 def index(request):
     appliances = Appliance.objects.all()
     print(appliances)
-    return render(request, 'index.html', {"appliances": appliances})
+    return render(request, 'index.html', {'appliances': appliances})
 
 
 def book1(request):
@@ -33,23 +33,23 @@ class LoginView(View):
     '''用户登录'''
 
     def get(self, request):
-        return render(request, "signin.html")
+        return render(request, 'signin.html')
 
     def post(self, request):
-        username = request.POST.get("username")
-        password = request.POST.get("password")
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
         user = UserProfile.objects.get(username=username)
 
         if not check_password(password, user.password):
-            return render(request, "signin.html")
+            return render(request, 'signin.html')
 
         if user:
             login(request, user)
-            print("user{} login!".format(user.get_username()))
-            return render(request, "index.html")
+            print('user{} login!'.format(user.get_username()))
+            return render(request, 'index.html')
         else:
-            return render(request, "signin.html")
+            return render(request, 'signin.html')
 
 
 class RegisterView(View):
@@ -59,11 +59,11 @@ class RegisterView(View):
         return render(request, 'signup.html')
 
     def post(self, request):
-        # 从前端获取submit信息
-        username = request.POST.get("username")
-        name = request.POST.get("name")
-        phone = request.POST.get("phone")
-        password = request.POST.get("password")
+        # 从前端获取submit信
+        username = request.POST.get('username')
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        password = request.POST.get('password')
 
         # 创建新的UserProfile对象
         user = UserProfile.objects.create(
@@ -76,8 +76,33 @@ class RegisterView(View):
         return render(request, 'index.html')
 
 
+class UpdateView(View):
+    '''变更用户信息'''
+
+    def put(self, request):
+        user_id = request.PUT.get('id')
+        name = request.PUT.get('name')
+        phone = request.PUT.get('phone')
+        password = request.PUT.get('password')
+
+        user = UserProfile.objects.get(id=user_id)
+
+        if name:
+            user.name = name
+
+        if phone:
+            user.phone = phone
+
+        if password:
+            user.password = password
+
+        user.save()
+
+        return render(request, '', {'user': user})
+
+
 def user_logout(request):
     '''退出登录'''
 
     logout(request)
-    return render(request, "index.html")
+    return render(request, 'index.html')

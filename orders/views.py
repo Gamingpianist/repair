@@ -6,7 +6,7 @@ from .models import Order
 # Create your views here.
 
 
-class OrderView(View):
+class OrderListView(View):
 
     def get(self, request):
 

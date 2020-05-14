@@ -5,7 +5,7 @@ from .models import FeedBack
 # Create your views here.
 
 
-class FeedBackView(View):
+class FeedBackListView(View):
 
     def get(self, request):
         feed_back = FeedBack.objects.all()

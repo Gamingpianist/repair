@@ -1,9 +1,11 @@
 from django.db import models
 
 # Create your models here.
+
+
 class Notice(models.Model):
     title = models.CharField(max_length=20, verbose_name='标题')
-    date = models.DateTimeField(verbose_name='公告日期')
+    date = models.DateField(verbose_name='公告日期', auto_now=True)
     content = models.TextField(max_length='500', verbose_name='内容')
 
     class Meta:
