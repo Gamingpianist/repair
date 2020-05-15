@@ -150,34 +150,29 @@
 	<!--End Breadcrumb Section -->
 
 	<!--Start Service Single Section -->
-	<section class="service_single_area section_padding">
+	<section class="contact_form_area contact_form_other_style section_padding text-center">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8">
-					<div class="service_single_left">
-						<div class="/upload/{{ appliance.image }}">
-                            <img src="/upload/{{ appliance.image }}" alt="service image">
-                        </div><!--end .service_single_img-->
-						<h1>{{ appliance.name }}</h1>
-						<p>{{ appliance.description }}</p>
-						</div><!--end .contact-details-->
-					</div><!--end .service_single_left-->
+				<div class="col-md-8 col-md-offset-2">
+					<div class="contact-details">
+						<div class="hero-section-title">
+							<i class="icon-snowflake"></i>
+							<h4>ORDER</h4>
+							<h1>请填写您的订单</h1>
+						</div>
+						<form action="" method="post">
+							<input type="text" name="appliance" class="input_mr input_half_width gray_bg" value="{{ appliance.name }}" readonly="readonly">
+							<input type="text" name="name" class="input_half_width gray_bg" value="{{ request.user.name }}" readonly="readonly">
+							<textarea class="gray_bg" name="address" id="address" cols="30" rows="10" placeholder="请填写您的地址"></textarea>
+							<textarea class="gray_bg" name="content" id="content" cols="30" rows="10" placeholder="请填写您的问题描述，以便估算价格"></textarea>
+							<button class="btn-orange" type="submit" value="Request a Quote Now">提交</button>
+						</form>
+					</div><!--end .contact-details-->
 				</div><!--end .col-md-8-->
-				<div class="col-md-4">
-					<div class="service_single_right">
-						<div class="service_widgets gray_bg mb_30">
-							<h3>服务类型</h3>
-							<ul>
-								<li><a href="/orders/order-add/?app_id={{ appliance.id }}">预约订单<i class="fa fa-angle-right"></i></a></li>
-								<li><a href="#">提出反馈<i class="fa fa-angle-right"></i></a></li>
-							</ul>
-						</div><!--end .service_widgets-->
-					</div><!--end .service_single_right-->
-				</div><!--end .col-md-4-->
             </div><!--end .row-->
         </div><!--end .container-->
-	</section><!--end .service_single_area-->
-	<!--End Service Single Section -->
+	</section><!--end .contact_form_area-->
+	<!--end contact section -->
 
 	<!--start footer section -->
     <footer class="footer_section section_padding">

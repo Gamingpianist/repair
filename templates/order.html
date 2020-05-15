@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,24 +12,24 @@
     <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/assets/css/fontello.css">
+    <link rel="stylesheet" href="/static/assets/css/owl-carousel.min.css">
+    <link rel="stylesheet" href="/static/assets/css/magnific.min.css">
     <link rel="stylesheet" href="/static/assets/css/animate.css">
-    <link rel="stylesheet" type="text/css" href="/static/assets/source/jquery.fancybox.css" media="screen" />
+    <link rel="stylesheet" href="/static/assets/source/jquery.fancybox.css" media="screen" />
     <link rel="stylesheet" href="/static/assets/css/style.css">
     <link rel="stylesheet" href="/static/assets/css/responsive.css">
 </head>
 <body>
 
-    <!-- Start PreLoader -->
-    <div class="preloader">
+	<!-- Start PreLoader -->
+	<div class="preloader">
         <div class="loader cf">
             <div class="span">
                 <div class="dashboard"></div>
             </div>
         </div>
     </div>
-    <!-- End PreLoader -->
-
-    <!--start header section -->
+	<!--start header section -->
 	<div class="main_menu_area">
 		<div class="container-fluid">
 			<div class="row">
@@ -61,7 +61,7 @@
 						        <li>{% if request.user.is_authenticated %}
 						        	<a href="/users/userupdate/">个人信息</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
 									{% else %}
-									<a href="/">个人信息</a><span class="responsive_click_menu fa fa-angle-down"></span>
+									<a href="">个人信息</a><span class="responsive_click_menu fa fa-angle-down"></span>
 									<ul class="dropdown-menu">
 										<li><a href="/users/signin/">请先登录</a></li>
 									</ul>
@@ -138,102 +138,65 @@
 		</div><!--end .container-fluid-->
 	</div><!--end .main_menu_area-->
 	<!--end header section -->
+		<!-- 搜索区域开始 -->
+		<div id="serach">
+			</div>
+			<form style="float: right" method="get" action="/orders/search/">
+            <label>
+                <div class="form-group">
+                    <input id="app_name" type="search" class="form-control" name="app_name" placeholder="您可输入家电名称以检索家电类型">
+                </div>
+            </label>
+            <input class="btn btn-default" type="submit" value="搜索">
+        </form>
+	<br>
+		<div class="shopping_content">
+			<div class="shopping_table">
+				<table border="1" bordercolor="#cccccc" cellspacing="0" cellpadding="0" style="width: 100%; text-align: center;">
+					<tr>
+						<th>家电名称</th>
+						<th>下单日期</th>
+						<th>维修价格</th>
+						<th>个人地址</th>
+						<th>订单状态</th>
+						<th>订单操作</th>
+					</tr>
+					{% for order in order %}
+					<tr>
+						<td>
+							<span>{{ order.appliance.name }}</span>
+						</td>
+						<td><span>{{ order.date }}</span></td>
+						<td>
+							<span>{{ order.price }}</span>
+						</td>
+						<td>
+							<span>{{ order.address}}</span>
+						</td>
+						<td>
+							<span>{{ order.get_status_display }}</span>
+						</td>
+						<td>
+							<a class="btn-readmore" href="/orders/order-detail/?order_id={{ order.id }}">查看详情以及支付</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
 
-	<!--Start Breadcrumb Section -->
-	<section class="breadcrumb_area text-center section_padding gray_bg">
-	    <ul class="breadcrumb">
-	        <li><a href="/">Home</a></li>
-	        <li> services</li>
-	    </ul>
-        <img class="header_slide_shape" src="/static/assets/images/header_slider_shape.png" alt="shape">
-	</section><!--end .breadcrumb_area-->
-	<!--End Breadcrumb Section -->
-
-	<!--Start Service Single Section -->
-	<section class="service_single_area section_padding">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8">
-					<div class="service_single_left">
-						<div class="/upload/{{ appliance.image }}">
-                            <img src="/upload/{{ appliance.image }}" alt="service image">
-                        </div><!--end .service_single_img-->
-						<h1>{{ appliance.name }}</h1>
-						<p>{{ appliance.description }}</p>
-						</div><!--end .contact-details-->
-					</div><!--end .service_single_left-->
-				</div><!--end .col-md-8-->
-				<div class="col-md-4">
-					<div class="service_single_right">
-						<div class="service_widgets gray_bg mb_30">
-							<h3>服务类型</h3>
-							<ul>
-								<li><a href="/orders/order-add/?app_id={{ appliance.id }}">预约订单<i class="fa fa-angle-right"></i></a></li>
-								<li><a href="#">提出反馈<i class="fa fa-angle-right"></i></a></li>
-							</ul>
-						</div><!--end .service_widgets-->
-					</div><!--end .service_single_right-->
-				</div><!--end .col-md-4-->
-            </div><!--end .row-->
-        </div><!--end .container-->
-	</section><!--end .service_single_area-->
-	<!--End Service Single Section -->
-
-	<!--start footer section -->
-    <footer class="footer_section section_padding">
-        <img src="/static/assets/images/shape/test_footer_shape.png" alt="Footer shape" class="footer_shape">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 col-sm-6">
-					<div class="footer_box">
-						<img src="/static/assets/images/footer_logo.png" alt="footer logo">
-						<p>每天上万家庭及企业用户使用我们的服务，公司成立20余年以来，我们通过雄厚的技术实力及完善的创新服务模式，为每一个家庭提供高效、便捷、放心的全新服务体验。</p>
-					</div><!--end .footer_box-->
-				</div><!--end .col-md-4-->
-
-				<div class="col-md-4 col-sm-4">
-					<div class="footer_box">
-						<h3>Contact</h3>
-						<p>855 Road Broklyn Street, 600 New York, USA</p>
-						<span class="support_email"><i class="fa fa-envelope"></i> <a href="">needhelp@refix.com</a></span>
-						<span class="support_num"><i class="fa fa-phone-square"></i> <a href="">666 888 0000</a></span>
-					</div><!--end .footer_box-->
-				</div><!--end .col-md-4-->
-            </div><!--end .row-->
-        </div><!--end .container-->
-
-		<!-- copyright section -->
-		<div class="copyright_area">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-sm-6">
-						<p>&copy; copyright 2020 by lty</p>
-					</div>
-					<div class="col-md-6 col-sm-6">
-						<ul class="text-right">
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-						</ul>
-					</div><!--end .col-md-6-->
-                </div><!--end .row-->
-            </div><!--end .container-->
-		</div><!--end .copyright_area-->
-	</footer><!--end .footer_section-->
-	<!--end footer section -->
+			<!--start footer section -->
 
 
-
-
-	<!-- Ajax Included -->
 	<script src="/static/assets/js/jquery.min.js"></script>
     <script src="/static/assets/source/jquery.fancybox.pack.js"></script>
+	<script src="/static/assets/js/bootstrap.min.js"></script>
+	<script src="/static/assets/js/owl.carousel.min.js"></script>
     <script src="/static/assets/js/waypoint.js"></script>
     <script src="/static/assets/js/jquery.counter.min.js"></script>
-	<script src="/static/assets/js/bootstrap.min.js"></script>
-    <script src="/static/assets/js/magnific.min.js"></script>
-    <script src="/static/assets/js/owl.carousel.min.js"></script>
+	<script src="/static/assets/js/magnific.min.js"></script>
 	<script src="/static/assets/js/custom.js"></script>
-</body>
+	<!--end footer section -->
+	</body>
+
 </html>
