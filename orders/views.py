@@ -15,6 +15,7 @@ class OrderListView(View):
 
 
 
+
 class OrderView(View):
     '''用户下单'''
     def get(self, request):
@@ -37,8 +38,9 @@ class OrderView(View):
         order = Order.objects.create(
             appliance=appliance, name=request.user, address=address, content=content)
         order.save()
+        order_list = Order.objects.filter(name=request.user)
 
-        return render(request, 'order.html', {'order': order})
+        return render(request, 'order.html', {'order': order_list})
 
 def search(request):
     '''根据名称获取appliances列表(模糊搜索)'''
@@ -50,15 +52,6 @@ def search(request):
     else:
         return traceback.print_exc()
 
-#def viewID(request):
-    '''根据id获取order'''
-
-    #if request.method == 'GET':
-        #orderid = request.GET.get('order_id')
-        #order = Order.objects.get(id=orderid)
-        #return render(request, 'order-detail.html', {'order': order})
-    #else:
-        #return traceback.print_exc()
 
 class OrdersubView(View):
     def get(self, request):
@@ -73,5 +66,17 @@ class OrdersubView(View):
         order = Order.objects.get(id=orderid)
         order.status = "1"
         order.save()
+        order_list = Order.objects.filter(name=request.user)
 
-        return render(request, 'order.html', {'order': order})
+        return render(request, 'order.html', {'order': order_list})
+
+
+def delete_order(request):
+    delete_order = request.POST.get("order_id")
+    Order.objects.get(id=delete_order).delete()
+    order_list = Order.objects.filter(name=request.user)
+    return render(request, 'order.html', {'order':order_list})
+
+
+
+

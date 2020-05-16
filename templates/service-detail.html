@@ -29,7 +29,7 @@
     </div>
     <!-- End PreLoader -->
 
-    <!--start header section -->
+	<!--start header section -->
 	<div class="main_menu_area">
 		<div class="container-fluid">
 			<div class="row">
@@ -48,36 +48,22 @@
 					    	<div class="navbar-collapse">
 						      <ul class="nav navbar-nav">
 						        <li>
-						        	<a href="">登录注册</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
-						        	<ul class="dropdown-menu">
-										{% if request.user.is_authenticated %}
-										<li><a href="/users/logout/">退出登录</a></li>
-										{% else %}
-						        		<li><a href="/users/signin/">登录</a></li>
-						        		<li><a href="/users/signup/">注册</a></li>
-										{% endif %}
-						        	</ul>
+						        	<a href="/users/gallery/">首页画廊</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
 						        </li>
 						        <li>{% if request.user.is_authenticated %}
 						        	<a href="/users/userupdate/">个人信息</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
 									{% else %}
-									<a href="/">个人信息</a><span class="responsive_click_menu fa fa-angle-down"></span>
+									<a href="">个人信息</a><span class="responsive_click_menu fa fa-angle-down"></span>
 									<ul class="dropdown-menu">
 										<li><a href="/users/signin/">请先登录</a></li>
 									</ul>
 									{% endif %}
 								</li>
 						        <li><a href="/appliances/services/">维修服务</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
-									<ul class="dropdown-menu">
-										{% for appliance in appliances %}
-											<li><a href="/appliances/service-detail/?app_id={{ appliance.id }}"> {{ appliance.name }}</a>
-										</li>
-										{% endfor %}
-									</ul>
 						        </li>
 						        <li>
 									{% if request.user.is_authenticated %}
-						        	<a href="page-book.html">订单信息</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+						        	<a href="/orders/order/">订单信息</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
 									{% else %}
 									<a href="">订单信息</a><span class="responsive_click_menu fa fa-angle-down"></span>
 									<ul class="dropdown-menu">
@@ -90,7 +76,7 @@
 						        </li>
 						        <li>
 									{% if request.user.is_authenticated %}
-						        	<a href="page-book.html">反馈</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+						        	<a href="/feedback/feedback/">反馈</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
 									{% else %}
 									<a href="">反馈</a><span class="responsive_click_menu fa fa-angle-down"></span>
 									<ul class="dropdown-menu">
@@ -105,6 +91,14 @@
 										<li><a href="/users/book2/">政策环境</a></li>
 										  <li><a href="/users/book3/">市场分析</a></li>
 										  <li><a href="/users/book4/">发展趋势</a></li>
+									</ul>
+						        </li>
+								  <li>
+						        	<a href="">家电常识</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+									  <ul class="dropdown-menu">
+										<li><a href="/users/read1/">电熨斗</a></li>
+										<li><a href="/users/read2/">榨汁机</a></li>
+										  <li><a href="/users/read3/">饮水机</a></li>
 									</ul>
 						        </li>
 						      </ul>
@@ -122,11 +116,15 @@
 								{% if request.user.is_authenticated %}
 								<span class="contact_us">
 									欢迎：{{ request.user.username }}
+									&nbsp&nbsp&nbsp
+									<a href="/users/logout/">退出登录</a>
 								</span>
 								{% else %}
 				    			<span class="contact_us">
 				    				欢迎：游客<br>
-				    				<a href="/users/signup/">请先注册</a>
+				    				<a href="/users/signin/">请先登录</a>
+									<br>
+									<a href="/users/signup/">点击注册</a>
 				    			</span>
 								{% endif %}
 
@@ -169,7 +167,7 @@
 							<h3>服务类型</h3>
 							<ul>
 								<li><a href="/orders/order-add/?app_id={{ appliance.id }}">预约订单<i class="fa fa-angle-right"></i></a></li>
-								<li><a href="#">提出反馈<i class="fa fa-angle-right"></i></a></li>
+								<li><a href="/feedback/feedback-add/?appliance_id={{ appliance.id }}">提出反馈<i class="fa fa-angle-right"></i></a></li>
 							</ul>
 						</div><!--end .service_widgets-->
 					</div><!--end .service_single_right-->
