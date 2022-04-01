@@ -70,13 +70,13 @@
 									</div><!--/.form-col -->
 									<div class="form-col1">
 										<div class="form-group">
-											<label for="name">name</label>
-										    <input type="text" class="form-control" id="name" placeholder="name" name="name">
+											<label for="name">Your old name is：{{ request.user.name }}</label>
+										    <input type="text" class="form-control" id="name" placeholder="Enter your new name here" name="name">
 										</div><!--/.form-group -->
 									</div><!--/.form-col1 -->
 									<div class="form-group">
-										<label for="phone">Phone</label>
-									    <input type="text" class="form-control" id="phone" placeholder="Enter your phone here" name="phone">
+										<label for="phone">Your old phone is：{{ request.user.phone }}</label>
+									    <input type="text" class="form-control" id="phone" placeholder="Enter your new phone here" name="phone">
 									</div><!--/.form-group -->
 									<div class="form-group">
 										<label for="password">password</label>

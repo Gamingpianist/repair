@@ -6,10 +6,10 @@ from users.models import UserProfile
 
 class Order(models.Model):
 
-    date = models.DateTimeField(verbose_name='下单日期')
+    date = models.DateTimeField(verbose_name='下单日期', auto_now=True)
     status = models.CharField(max_length=10, choices=(
-        ('0', '待付款'), ('1', '待维修'), ('2', '已完成')), verbose_name='订单状态')
-    price = models.FloatField(verbose_name='维修价格')
+        ('0', '待付款'), ('1', '待维修'), ('2', '已完成')), verbose_name='订单状态', default=0)
+    price = models.FloatField(verbose_name='维修价格', default=0)
     appliance = models.ForeignKey(
         Appliance, on_delete=models.CASCADE, verbose_name='家电名称')
     name = models.ForeignKey(

@@ -28,6 +28,17 @@ def book3(request):
 def book4(request):
     return render(request, 'book4.html')
 
+def gallery(request):
+    return render(request, 'gallery.html')
+
+def read1(request):
+    return render(request, 'read1.html')
+
+def read2(request):
+    return render(request, 'read2.html')
+
+def read3(request):
+    return render(request, 'read3.html')
 
 class LoginView(View):
     '''用户登录'''
