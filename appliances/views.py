@@ -3,18 +3,24 @@ import traceback
 
 from django.shortcuts import render
 from django.views.generic.base import View
-
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Appliance
 
 # Create your views here.
 
 
-class ApplianceListView(View):
-    '''获取全部appliance列表'''
-
-    def get(self, request):
-        appliances = Appliance.objects.all()
-        return render(request, "services.html", {"appliances": appliances})
+def ApplianceListView(request):
+    limit = 6
+    appliances = Appliance.objects.all()
+    paginator =Paginator(appliances, limit)
+    page = request.GET.get('page')
+    try:
+        appliances = paginator.page(page)
+    except PageNotAnInteger:
+        appliances = paginator.page(1)
+    except EmptyPage:
+        appliances = paginator.page(paginator.num_pages)
+    return render(request, "services.html", {"appliances": appliances})
 
 
 

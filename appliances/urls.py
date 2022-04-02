@@ -4,7 +4,7 @@ from .views import ApplianceListView, viewByID, searchByName
 
 
 urlpatterns = [
-    path('services/', ApplianceListView.as_view()),
+    path('services/', ApplianceListView),
     path('service-detail/', viewByID),
     path('search/', searchByName),
 ]

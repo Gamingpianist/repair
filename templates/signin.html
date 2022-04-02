@@ -10,10 +10,10 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
         <!--font-family-->
-		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext" rel="stylesheet">
+		<link href="/static/assets/css/googleapis.css" rel="stylesheet">
         
         <!-- title of site -->
-        <title>Sign in</title>
+        <title>爱我家园</title>
 
         <!-- For favicon png -->
 		<link rel="shortcut icon" type="image/icon" href="/static/assets1/logo/favicon.png"/>
@@ -56,22 +56,22 @@
 			<div class="container">
 
 				<div class="sign-content">
-					<h2>sign in</h2>
+					<h2>登录</h2>
 					
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="signin-form">
 								<form action="" method="post">
 									<div class="form-group">
-									    <label for="username">Username</label>
-									    <input type="text" class="form-control" id="username" placeholder="enter your username here" name="username">
+									    <label for="username">用户名</label>
+									    <input type="text" class="form-control" id="username" placeholder="请输入用户名" name="username">
 									</div><!--/.form-group -->
 									<div class="form-group">
-										<label for="password">password</label>
-									    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+										<label for="password">密码</label>
+									    <input type="password" class="form-control" id="password" placeholder="请输入密码" name="password">
 									</div><!--/.form-group -->
 									<button type="submit" class="btn signin_btn" data-toggle="modal" data-target=".signin_modal">
-								sign in
+								登录
 								</button>
 								</form><!--/form -->
 							</div><!--/.signin-form -->
@@ -83,8 +83,11 @@
 							<div class="signin-footer">
 
 								<p>
-									Don’t have an Account ?
-									<a href="/users/signup/">register</a>
+									如果你没有密码。请先
+									<a href="/users/signup/">注册</a>
+									<br>
+									返回
+								<a href="/">首页</a>
 								</p>
 							</div><!--/.signin-footer -->
 						</div><!--/.col-->

@@ -22,7 +22,6 @@ from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     path('users/', include('users.urls')),
@@ -30,5 +29,6 @@ urlpatterns = [
     path('feedback/', include('feedback.urls')),
     path('notice/', include('notice.urls')),
     path('orders/', include('orders.urls')),
-    path('', index)
+    path('', index, name='index')
+
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>爱我家园</title>
     <!--google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="/static/assets/css/googleapis.css" rel="stylesheet">
     <!--favicon-->
     <link rel="icon" href="/static/assets/images/favicon.png">
     <!-- Lib & Custom Stylesheet Included -->
@@ -30,7 +30,7 @@
     </div>
     <!-- End PreLoader -->
 
-    <!--start header section -->
+	<!--start header section -->
 	<div class="main_menu_area">
 		<div class="container-fluid">
 			<div class="row">
@@ -49,18 +49,10 @@
 					    	<div class="navbar-collapse">
 						      <ul class="nav navbar-nav">
 						        <li>
-						        	<a href="/">登录注册</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
-						        	<ul class="dropdown-menu">
-										{% if request.user.is_authenticated %}
-										<li><a href="/users/logout/">退出登录</a></li>
-										{% else %}
-						        		<li><a href="/users/signin/">登录</a></li>
-						        		<li><a href="/users/signup/">注册</a></li>
-										{% endif %}
-						        	</ul>
+						        	<a href="/users/gallery/">首页画廊</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
 						        </li>
 						        <li>{% if request.user.is_authenticated %}
-						        	<a href="page-book.html">个人信息</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+						        	<a href="/users/userupdate/">个人信息</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
 									{% else %}
 									<a href="">个人信息</a><span class="responsive_click_menu fa fa-angle-down"></span>
 									<ul class="dropdown-menu">
@@ -69,16 +61,10 @@
 									{% endif %}
 								</li>
 						        <li><a href="/appliances/services/">维修服务</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
-									<ul class="dropdown-menu">
-										{% for appliance in appliances %}
-											<li><a href="/appliances/service-detail/?app_id={{ appliance.id }}"> {{ appliance.name }}</a>
-										</li>
-										{% endfor %}
-									</ul>
 						        </li>
 						        <li>
 									{% if request.user.is_authenticated %}
-						        	<a href="page-book.html">订单信息</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+						        	<a href="/orders/order/">订单信息</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
 									{% else %}
 									<a href="">订单信息</a><span class="responsive_click_menu fa fa-angle-down"></span>
 									<ul class="dropdown-menu">
@@ -91,7 +77,7 @@
 						        </li>
 						        <li>
 									{% if request.user.is_authenticated %}
-						        	<a href="page-book.html">反馈</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
+						        	<a href="/feedback/feedback/">反馈</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
 									{% else %}
 									<a href="">反馈</a><span class="responsive_click_menu fa fa-angle-down"></span>
 									<ul class="dropdown-menu">
@@ -99,15 +85,6 @@
 									</ul>
 									{% endif %}
 								</li>
-								  <li>
-						        	<a href="">行业资讯</a>  <span class="responsive_click_menu fa fa-angle-down"></span>
-									  <ul class="dropdown-menu">
-										<li><a href="/users/book1/">行业现状</a></li>
-										<li><a href="/users/book2/">政策环境</a></li>
-										  <li><a href="/users/book3/">市场分析</a></li>
-										  <li><a href="/users/book4/">发展趋势</a></li>
-									</ul>
-						        </li>
 						      </ul>
 						    </div><!-- /.navbar-collapse -->
 					    </div>
@@ -123,11 +100,15 @@
 								{% if request.user.is_authenticated %}
 								<span class="contact_us">
 									欢迎：{{ request.user.username }}
+									<br>
+									<a href="/users/logout/">退出登录</a>
 								</span>
 								{% else %}
 				    			<span class="contact_us">
 				    				欢迎：游客<br>
-				    				<a href="/users/signup/">请先注册</a>
+				    				<a href="/users/signin/">请先登录</a>
+									<br>
+									<a href="/users/signup/">点击注册</a>
 				    			</span>
 								{% endif %}
 
@@ -144,15 +125,15 @@
 	<!--Start Breadcrumb Section -->
 	<section class="breadcrumb_area text-center section_padding gray_bg">
 	    <ul class="breadcrumb">
-	        <li><a href="/">Home</a></li>
-	        <li> services</li>
+	        <li><a href="/">首页</a></li>
+	        <li>服务</li>
 	    </ul>
-	    <h1>Our Services</h1>
+	    <h1>我们的服务</h1>
         <img class="header_slide_shape" src="/static/assets/images/header_slider_shape.png" alt="shape">
         <form style="float: right" method="get" action="/appliances/search/">
             <label>
                 <div class="form-group">
-                    <input id="app_name" type="search" class="form-control" name="app_name" placeholder="您可输入家电名称以检索家电类型">
+                    <input id="app_name" type="search" class="form-control" name="app_name" placeholder="您可输入家电名称以检索">
                 </div>
             </label>
             <input class="btn btn-default" type="submit" value="搜索">
@@ -174,19 +155,31 @@
                         </div>
                         <div class="slider_service_details">
                             <a href="/appliances/service-detail/?app_id={{ appliance.id }}"><h2>{{ appliance.name }}</h2></a>
-                            <p>We are specialized in repairing your appliances. We promise to deliver satisfaction.</p>
-                            <a class="btn-readmore" href="/appliances/service-detail/?app_id={{ appliance.id }}">Read More</a>
+                            <p>我们的服务是专业修理你的电器，我们承诺服务的品质。</p>
+                            <a class="btn-readmore" href="/appliances/service-detail/?app_id={{ appliance.id }}">查看详情</a>
                         </div><!--end .slider_service_details-->
                     </div><!--end .slider_service_box-->
                 </div><!--end .col-md-4-->
                 {% endfor %}
-
-
-
-
-
             </div><!--end .row-->
         </div><!--end .container-->
+        <div id="pages" class="text-center" >
+					 <nav>
+						 <ul class="pagination">
+							 <li class="step-links">
+								 {% if appliances.has_previous %}
+								 <a class='active' href="?page={{ appliances.previous_page_number }}">上一页</a>
+								 {% endif %}
+								 <span class="current">
+									 Page {{ appliances.number }} of {{ appliances.paginator.num_pages }}
+								 </span>
+								 {% if appliances.has_next %}
+								 <a class='active' href="?page={{ appliances.next_page_number }}">下一页</a>
+								 {% endif %}
+							 </li>
+						 </ul>
+					 </nav>
+				 </div>
     </section><!--end .slider_service_area-->
 	<!--End Slider Service section -->
 
@@ -198,7 +191,7 @@
                     <div class="hero-section-title">
                         <i class="icon-snowflake"></i>
                         <h4>为什么选择我们？</h4>
-                        <h1>Reasons to choose refix</h1>
+                        <h1>选择我们的原因如下</h1>
                     </div><!--end .hero-section-title-->
                 </div><!--end .col-md-12-->
             </div><!--end .row-->
@@ -250,17 +243,18 @@
             <div class="row">
                 <div class="col-md-4 col-sm-6">
                     <div class="footer_box">
-                        <img src="/static/assets/images/footer_logo.png" alt="footer logo">
+                        <br>
+                        <br>
                         <p>每天上万家庭及企业用户使用我们的服务，公司成立20余年以来，我们通过雄厚的技术实力及完善的创新服务模式，为每一个家庭提供高效、便捷、放心的全新服务体验。</p>
                     </div><!--end .footer_box-->
                 </div><!--end .col-md-4-->
 
                 <div class="col-md-4 col-sm-4">
                     <div class="footer_box">
-                        <h3>Contact</h3>
-                        <p>855 Road Broklyn Street, 600 New York, USA</p>
-                        <span class="support_email"><i class="fa fa-envelope"></i> <a href="">needhelp@refix.com</a></span>
-                        <span class="support_num"><i class="fa fa-phone-square"></i> <a href="">666 888 0000</a></span>
+                        <h3>联系地址</h3>
+						<p>西安石油大学</p>
+						<span class="support_email"><i class="fa fa-envelope"></i> <a href="">666888@qq.com</a></span>
+						<span class="support_num"><i class="fa fa-phone-square"></i> <a href="">666 888 0000</a></span>
                     </div><!--end .footer_box-->
                 </div><!--end .col-md-4-->
             </div><!--end .row-->
@@ -271,7 +265,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
-                        <p>&copy; copyright 2020 by lty</p>
                     </div><!--end .col-md-6-->
                     <div class="col-md-6 col-sm-6">
                         <ul class="text-right">

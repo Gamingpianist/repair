@@ -10,10 +10,10 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
         <!--font-family-->
-		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext" rel="stylesheet">
+		<link href="/static/assets/css/googleapis.css" rel="stylesheet">
         
         <!-- title of site -->
-        <title>Sign up</title>
+        <title>爱我家园</title>
 
         <!-- For favicon png -->
 		<link rel="shortcut icon" type="image/icon" href="/static/assets1/logo/favicon.png"/>
@@ -56,7 +56,7 @@
 			<div class="container">
 
 				<div class="sign-content">
-					<h2>sign up</h2>
+					<h2>注册</h2>
 					
 					<div class="row">
 						<div class="col-sm-12">
@@ -64,30 +64,30 @@
 								<form method="post" id="reg_form" >
 									<div class="form-col">
 										<div class="form-group">
-										    <label for="username">Username</label>
-										    <input type="text" class="form-control" id="username" placeholder="username" name="username">
+										    <label for="username">用户名</label>
+										    <input type="text" class="form-control" id="username" placeholder="请输入用户名" name="username">
 										</div><!--/.form-group -->
 									</div><!--/.form-col -->
 									<div class="form-col1">
 										<div class="form-group">
-											<label for="name">name</label>
-										    <input type="text" class="form-control" id="name" placeholder="name" name="name">
+											<label for="name">姓名</label>
+										    <input type="text" class="form-control" id="name" placeholder="请输入姓名" name="name">
 										</div><!--/.form-group -->
 									</div><!--/.form-col1 -->
 									<div class="form-group">
-										<label for="phone">Phone</label>
-									    <input type="text" class="form-control" id="phone" placeholder="Enter your phone here" name="phone">
+										<label for="phone">手机号码</label>
+									    <input type="text" class="form-control" id="phone" placeholder="请输入手机号码" name="phone">
 									</div><!--/.form-group -->
 									<div class="form-group">
-										<label for="password">password</label>
-									    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+										<label for="password">密码</label>
+									    <input type="password" class="form-control" id="password" placeholder="请输入密码" name="password">
 									</div><!--/.form-group -->
 									<div class="form-group">
-										<label for="password2">retype password</label>
-									    <input type="password" class="form-control" id="password2" placeholder="Retype Password" name="password2">
+										<label for="password2">重复密码</label>
+									    <input type="password" class="form-control" id="password2" placeholder="请再次输入密码" name="password2">
 									</div><!--/.form-group -->
 									<button type="button" class="btn signin_btn" data-toggle="modal" data-target=".signin_modal" id="btn-submit" onclick=reg()>
-								sign up
+								注册
 								</button>
 									<script>
                                 function reg() {
@@ -128,8 +128,11 @@
 							<div class="signin-footer">
 
 								<p>
-									already member ?
-									<a href="/users/signin/">sign in</a>
+									如果已经拥有账号？请
+									<a href="/users/signin/">登录</a>
+									<br>
+									返回
+								<a href="/">首页</a>
 								</p>
 							</div><!--/.signin-footer -->
 						</div><!--/.col-->

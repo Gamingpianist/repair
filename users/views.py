@@ -1,32 +1,22 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.views.generic.base import View
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import make_password, check_password
 from appliances.models import Appliance
 from .models import UserProfile
+
+
 # Create your views here.
 
 
 def index(request):
     appliances = Appliance.objects.all()
-    print(appliances)
+    #print(appliances)
     return render(request, 'index.html', {'appliances': appliances})
 
 
-def book1(request):
-    return render(request, 'book1.html')
-
-
-def book2(request):
-    return render(request, 'book2.html')
-
-
-def book3(request):
-    return render(request, 'book3.html')
-
-
-def book4(request):
-    return render(request, 'book4.html')
+def gallery(request):
+    return render(request, 'gallery.html')
 
 
 class LoginView(View):
@@ -39,17 +29,17 @@ class LoginView(View):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        user = UserProfile.objects.get(username=username)
+        try:
+            user = UserProfile.objects.get(username=username)
+        except UserProfile.DoesNotExist:
+            return render(request, 'signin.html', {'content': '用户不存在'})
 
         if not check_password(password, user.password):
             return render(request, 'signin.html')
 
-        if user:
-            login(request, user)
-            print('user{} login!'.format(user.get_username()))
-            return render(request, 'index.html')
-        else:
-            return render(request, 'signin.html')
+        login(request, user)
+        #print('user{} login!'.format(user.get_username()))
+        return redirect(reverse('index'))
 
 
 class RegisterView(View):
@@ -66,14 +56,18 @@ class RegisterView(View):
         password = request.POST.get('password')
 
         # 创建新的UserProfile对象
-        user = UserProfile.objects.create(
-            username=username, name=name, phone=phone, password=make_password(password))
+        try:
+            user = UserProfile.objects.create(
+                username=username, name=name, phone=phone, password=make_password(password))
+        except:
+            return render(request, 'signup.html', {'content': '用户名已存在!'})
+
         user.is_superuser = False  # 去除管理权限
         user.save()
 
         login(request, user)  # 登录
 
-        return render(request, 'index.html')
+        return redirect(reverse('index'))
 
 
 class UpdateView(View):
@@ -110,4 +104,4 @@ def user_logout(request):
     '''退出登录'''
 
     logout(request)
-    return render(request, 'index.html')
+    return redirect(reverse('index'))
